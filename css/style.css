@@ -1,0 +1,10 @@
+html,
+body {
+    margin: 50px;
+    padding: 0;
+}
+
+.stick-bottom {
+	position: fixed;
+	bottom: 0;
+}

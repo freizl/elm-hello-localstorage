@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> • LocalStorage</title>
+        <link rel="stylesheet" href="css/materialize.min.css">
+        <link rel="stylesheet" href="css/style.css">
+
+        <script type="text/javascript" src="elm.js"></script>
+
+        <script type="text/javascript">
+            var keys = [],
+            insertLS = function (key) {
+                var v= genValue(key),
+                    o = { cacheEntry: true,
+                          expire: new Date().getTime() + Math.pow(-10, key),
+                          //value: { context: "cx/spec/" + key + "-bsm", price: 1234 }
+                          value: v
+                        }
+                localStorage.setItem('cx/test/' + key, JSON.stringify(o))
+            },
+            genValue = function (key) {
+                if (key % 3 === 0) {
+                    return [''+key, '=>', ''+key]
+                } else if (key % 5 === 0) {
+                    return {context: "about:blank - " + key, price: key * 1010}
+                } else if (key === 11) {
+                    return {"ip":"1.1.1.1","country":"US","region":"CA"}
+                } else {
+                    return key + 'happy brown happy brownhappy brownhappy brownhappy brownhappy brownhappy brownhappy brownhappy brownhappy brownhappy brownhappy brownhappy brownhappy brownhappy brownhappy brownhappy brownhappy brownhappy brown happy brownhappy brownhappy brownhappy brownhappy brownhappy brownhappy brownhappy brown ~~~ ' + key
+                }
+            }
+            for (var i=0; i<15; i++) keys.push(i)
+
+            keys.map(insertLS)
+        </script>
+    </head>
+
+    <body>
+    </body>
+
+    <script type="text/javascript" src="main.js"> </script>
+
+</html>
